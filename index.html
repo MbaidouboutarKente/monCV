@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV de Mbairamadji Clark</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /* simulation de chargement du site */
+      .chargement-font{
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        color: red;
+        font-size: 2em;
+        text-transform: uppercase;
+      }
+      .chargement{
+        border: 10px solid transparent;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        animation: ClarkNestor 5s linear infinite;
+      }
+        @keyframes ClarkNestor{
+            0%{
+                border-top-color: blue;
+            }
+            25%{
+                border-top-color: transparent;
+                border-right-color: yellow;
+            }
+            50%{
+                border-right-color: transparent;
+                border-bottom-color: red;
+            }
+            75%{
+                border-bottom-color: transparent;
+                border-left-color: green;
+            }
+            100%{
+                border-left-color: transparent;
+                border-top-color: orange;
+            }
+        }
+      .container{
+        display: none;
+      }
+      .container {
+        position: relative;
+        top: 100px;
+        width: 90%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        overflow: hidden;
+        z-index: 1000;
+      }
+      header {
+        text-align: left;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      header iframe, .imag {
+        position: absolute;
+        right: 10px;
+        top: -15px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        /* font-size: 300px; */
+        border: 1px solid #ccc;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .montophe{
+        position: absolute;
+        top: -60px;
+        left: -75px;
+        width: 200%;
+        height: 200%;
+      
+      }
+      h1,
+      h2,
+      h3 {
+        color: #007bff;
+      }
+      .liens {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+        z-index: 10;
+      }
+      .liens button {
+        margin: 5px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 5s;
+      }
+      .liens button:hover {
+        background-color: #0056b3;
+      }
+      section {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      section.active {
+        max-height: 1000px; /* Ajustez cette valeur selon le contenu */
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+            
+      footer { 
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="chargement-font">
+        <p>Chargement de la page...
+        </p>
+        <div class="chargement"></div>
+    </div>
+    <div class="container">
+      <header>
+      
+        <h1>Mbairamadji Clark</h1>
+        <div class="detail">
+          <label for="">Nom: Mbairamadji</label><br>
+          <label for="">Prénom: Clark</label><br>
+          <label for="">Adresse: Bini</label><br>
+          <label for="">Tél: +237 692693889</label><br>
+          <label for="">Email: mbairamadjiclark57@gmail.com</label>
+        </div>
+        <p>
+          GitHub:
+          <a href="https://github.com/mbaidouboutarkente" target="_blank"
+          >github.com/mbairamadji clark</a
+          >
+        </p>
+         <div class="imag">
+            <iframe class="montophe" src="https://drive.google.com/file/d/1B24QIm0v_IORS49WCmMiWCDUS21mh-H9/preview"  frameborder="0"></iframe><br><br>
+          </div>
+        <hr>
+      </header>
+
+      <div class="liens">
+        <p>
+          Résumé: Développeur de logiciels passionné et
+          motivé à contribuer à des projets informatiques innovants. Compétent
+          dans les langages de programmation web tels que HTML, CSS,
+          JavaScript et Myql, avec une volonté d'apprendre et de se développer
+          professionnellement.
+        </p>
+        <button onclick="toggleSection('description')">
+          Présentation du projet
+        </button>
+        <button onclick="toggleSection('competences')">Compétences</button>
+        <button onclick="toggleSection('experience')">
+          Expérience professionnelle
+        </button>
+        <button onclick="toggleSection('formation')">Formation</button>
+        <button onclick="toggleSection('projets')">Projets</button>
+        <button onclick="toggleSection('langues')">Langues</button>
+        <button onclick="toggleSection('interets')">Centres d'intérêt</button>
+
+      </div>
+      <hr />
+
+      <section id="description">
+        <h2>Présentation du Projet</h2>
+        <p>
+          Notre projet consiste à concevoir une page web interactive permettant
+          de présenter des informations détaillées sur une personne. Le profil
+          comprend des détails tels que le nom, le prénom, l'adresse, le numéro
+          de téléphone, l'adresse e-mail, un bref résumé, les compétences, projets, etc.
+        </p>
+        <p>
+          Ce projet offre une expérience utilisateur fluide grâce à une
+          navigation intuitive. L'utilisateur peut sélectionner une option 
+          spécifique à partir d'un menu de navigation, et les informations
+          correspondantes sont affichées dynamiquement sans nécessiter de
+          rechargement de page. De plus, l'utilisateur peut toujours en un seul clic choisir d'autres options.
+        </p>
+        <p>
+          Avec cette approche interactive, notre projet vise à offrir une
+          présentation claire et efficace des compétences et des réalisations d'un individu, tout en offrant une expérience utilisateur agréable
+          et fluide.
+        </p>
+      </section>
+
+      <section id="competences">
+        <h2>Compétences</h2>
+        <ul>
+          <li>Langages de programmation : HTML5, CSS3, JavaScript</li>
+          <li>Frameworks front-end : Bootstrap</li>
+          <!-- <li>Gestion de version : Git</li> -->
+          <li>Bases de données : SQL</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Expérience professionnelle</h2>
+        <p>Pas d'experience professionnelle pour le moment</p>
+      </section>
+
+      <section id="formation">
+        <h2>Formation</h2>
+        <ul>
+          <li>
+            Licence 1 en Informatique - Université de Ngaoundéré; 
+          </li>
+          <p>
+            Modules principaux : <ul>
+              <li>Introduction a l'informatique</li>
+              <li>mathématiques pour l'informatiques</li>
+              <li>Algorithmique et structures de données</li>
+              <li>Introduction au Systemes d'exploitation</li>
+              <li>Languages de programmation(programmation structures, programmation fonctionnelle)</li>
+            </ul>
+          </p>
+          <li>
+            Baccalauréat en Sciences (D) - Lycée Collège source de Développement
+            (Septembre 2018 - Juin 2021)
+          </li>
+        
+        </ul>
+      </section>
+
+      <section id="projets">
+        <h2>Projets</h2>
+        <p>
+          <p>Projets personnels:
+            Portfolio en ligne
+            <ul>
+              <li>Développement et maintenance d'un portfolio personnel pour présenter mes projets et compétences en web.</li>
+              <li>Utilisation de HTML, CSS et JavaScript pour la création de l'interface utilisateur.</li>
+              <li>Intégration de fonctionnalités interactives et de mise en page réactives pour une expérience utilisateur optimale.</li>
+            </ul>
+          </p>
+          <ol>
+            <p>Quelque projet realiser</p>
+            <li>
+              <p>Application de gestion d'un hotel 
+                  <ul>
+                    <li>Conception et developpement d'une application web de gestion d'hotel, presenttion d'un hotel</li>
+                    <li>Utilisation de HTML, CSS.</li>
+                    <li>Pour le visiter, cliquez <a href="https://mbaidouboutarkente.github.io/hotel/">ici</a></li>
+                  </ul>
+              </p>
+            </li>
+            <li>
+              <p> Application de gestion de restorant 
+                <ul>
+                  <li>Conception et developpement d'une application web de gestion d'un restorant permettant aux utilisateurs de s'authentifier et de passer des commandes</li>
+                  <li>Utilisation de HTML, CSS, JavaScript, Bootstrap</li>
+                    
+                </ul>
+              </p>
+            </li>
+          </ol>
+                    
+        </p>
+      </section>
+
+      <section id="langues">
+        <h2>Langues</h2>
+        <p>
+           <ul>
+              <li>Francais(niveau intermediare)</li>
+              <li>Anglais(débutant)</li>
+           </ul>
+        </p>
+      </section>
+
+      <section id="interets">
+        <h2>Centres d'intérêt</h2>
+        <p>Exploration des nouvelles technologies : Passionné par l'évolution constante du monde de la technologie, je passe mon temps libre à explorer de nouveaux langages de programmation, frameworks et outils de développement. J'essaye participer également à des projets open source pour continuer à apprendre et à améliorer mes compétences en développement.</p>
+      </section>
+
+      <footer>
+        <p>site personnel mbairamadji@.kente</p>
+      </footer>
+    </div>
+
+    <script>
+        // simulation du chargement de la page
+        setTimeout(function () {
+            // masquer l'element de chargement et afficher le contenu de la page
+            document.querySelector('.chargement-font').style.display ="none";
+            document.querySelector('.container').style.display ="block";
+        }, 5000);
+      function toggleSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        var activeSection = document.querySelector("section.active");
+        if (activeSection && activeSection !== section) {
+          activeSection.classList.remove("active");
+        }
+        section.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
