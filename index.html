@@ -1,332 +1,864 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV de Mbairamadji Clark</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord | Mbairamadji Clark - Développeur Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      /* simulation de chargement du site */
-      .chargement-font{
-        position: absolute;
-        top: 0;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: black;
-        color: red;
-        font-size: 2em;
-        text-transform: uppercase;
-      }
-      .chargement{
-        border: 10px solid transparent;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        animation: ClarkNestor 5s linear infinite;
-      }
-        @keyframes ClarkNestor{
-            0%{
-                border-top-color: blue;
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --sidebar-width: 250px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            grid-template-rows: var(--header-height) 1fr;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-row: 1 / -1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .profile {
+            text-align: center;
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 1rem;
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-title {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .nav-menu {
+            margin-top: 1.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 3px solid white;
+        }
+
+        .nav-icon {
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 2;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+        }
+
+        .header-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            grid-column: 2;
+            padding: 2rem;
+            background-color: #f5f7fa;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .card-icon.blue {
+            background-color: var(--primary);
+        }
+
+        .card-icon.green {
+            background-color: var(--success);
+        }
+
+        .card-icon.pink {
+            background-color: var(--warning);
+        }
+
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .progress-container {
+            margin-top: 1rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .progress-fill.html {
+            width: 85%;
+            background-color: #e34c26;
+        }
+
+        .progress-fill.css {
+            width: 80%;
+            background-color: #264de4;
+        }
+
+        .progress-fill.js {
+            width: 70%;
+            background-color: #f0db4f;
+        }
+
+        .progress-fill.bootstrap {
+            width: 75%;
+            background-color: #563d7c;
+        }
+
+        .progress-fill.mysql {
+            width: 65%;
+            background-color: #00758f;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-date {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .project-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-name {
+            font-weight: 600;
+        }
+
+        .project-links a {
+            margin-left: 0.8rem;
+            color: var(--primary);
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.8rem;
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 80px 1fr;
             }
-            25%{
-                border-top-color: transparent;
-                border-right-color: yellow;
+
+            .profile-name, .profile-title, .nav-text {
+                display: none;
             }
-            50%{
-                border-right-color: transparent;
-                border-bottom-color: red;
+
+            .profile-img {
+                width: 50px;
+                height: 50px;
             }
-            75%{
-                border-bottom-color: transparent;
-                border-left-color: green;
+
+            .nav-item {
+                justify-content: center;
             }
-            100%{
-                border-left-color: transparent;
-                border-top-color: orange;
+
+            .nav-icon {
+                margin-right: 0;
+                font-size: 1.3rem;
             }
         }
-      .container{
-        display: none;
-      }
-      .container {
-        position: relative;
-        top: 100px;
-        width: 90%;
-        max-width: 800px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        overflow: hidden;
-        z-index: 1000;
-      }
-      header {
-        text-align: left;
-        margin-bottom: 20px;
-        position: relative;
-      }
-      header iframe, .imag {
-        position: absolute;
-        right: 10px;
-        top: -15px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        /* font-size: 300px; */
-        border: 1px solid #ccc;
-        z-index: 1;
-        overflow: hidden;
-      }
-      .montophe{
-        position: absolute;
-        top: -60px;
-        left: -75px;
-        width: 200%;
-        height: 200%;
-      
-      }
-      h1,
-      h2,
-      h3 {
-        color: #007bff;
-      }
-      .liens {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 20px;
-        z-index: 10;
-      }
-      .liens button {
-        margin: 5px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 5s;
-      }
-      .liens button:hover {
-        background-color: #0056b3;
-      }
-      section {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-      }
-      section.active {
-        max-height: 1000px; /* Ajustez cette valeur selon le contenu */
-        margin: 20px 0;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-      }
-            
-      footer { 
-        text-align: center;
-        margin-top: 20px;
-      }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .sidebar {
+                grid-row: 1;
+                grid-column: 1;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 1rem;
+            }
+
+            .profile {
+                display: flex;
+                align-items: center;
+                padding: 0;
+                border-bottom: none;
+            }
+
+            .profile-img {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+
+            .profile-name {
+                display: block;
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+            .profile-title {
+                display: none;
+            }
+
+            .nav-menu {
+                margin-top: 0;
+                display: flex;
+            }
+
+            .nav-item {
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-item.active {
+                border-left: none;
+                border-bottom: 3px solid white;
+            }
+
+            .header {
+                grid-column: 1;
+                display: none;
+            }
+
+            .main-content {
+                grid-column: 1;
+            }
+        }
     </style>
-  </head>
-  <body>
-      <div class="chargement-font">
-        <p>Chargement de la page...
-        </p>
-        <div class="chargement"></div>
-    </div>
-    <div class="container">
-      <header>
-      
-        <h1>Mbairamadji Clark</h1>
-        <div class="detail">
-          <label for="">Nom: Mbairamadji</label><br>
-          <label for="">Prénom: Clark</label><br>
-          <label for="">Adresse: Bini</label><br>
-          <label for="">Tél: +237 692693889</label><br>
-          <label for="">Email: mbairamadjiclark57@gmail.com</label>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://drive.google.com/uc?export=view&id=1B24QIm0v_IORS49WCmMiWCDUS21mh-H9" alt="Mbairamadji Clark" class="profile-img">
+                <div class="profile-name">Mbairamadji Clark</div>
+                <div class="profile-title">Développeur Full Stack</div>
+            </div>
+
+            <div class="nav-menu">
+                <div class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt nav-icon"></i>
+                    <span class="nav-text">Tableau de Bord</span>
+                </div>
+                <div class="nav-item" data-section="competences">
+                    <i class="fas fa-code nav-icon"></i>
+                    <span class="nav-text">Compétences</span>
+                </div>
+                <div class="nav-item" data-section="experience">
+                    <i class="fas fa-briefcase nav-icon"></i>
+                    <span class="nav-text">Expérience</span>
+                </div>
+                <div class="nav-item" data-section="formation">
+                    <i class="fas fa-graduation-cap nav-icon"></i>
+                    <span class="nav-text">Formation</span>
+                </div>
+                <div class="nav-item" data-section="projets">
+                    <i class="fas fa-project-diagram nav-icon"></i>
+                    <span class="nav-text">Projets</span>
+                </div>
+                <div class="nav-item" data-section="contact">
+                    <i class="fas fa-envelope nav-icon"></i>
+                    <span class="nav-text">Contact</span>
+                </div>
+            </div>
         </div>
-        <p>
-          GitHub:
-          <a href="https://github.com/mbaidouboutarkente" target="_blank"
-          >github.com/mbairamadji clark</a
-          >
-        </p>
-         <div class="imag">
-            <iframe class="montophe" src="https://drive.google.com/file/d/1B24QIm0v_IORS49WCmMiWCDUS21mh-H9/preview"  frameborder="0"></iframe><br><br>
-          </div>
-        <hr>
-      </header>
 
-      <div class="liens">
-        <p>
-          Résumé: Développeur de logiciels passionné et
-          motivé à contribuer à des projets informatiques innovants. Compétent
-          dans les langages de programmation web tels que HTML, CSS,
-          JavaScript et Myql, avec une volonté d'apprendre et de se développer
-          professionnellement.
-        </p>
-        <button onclick="toggleSection('description')">
-          Présentation du projet
-        </button>
-        <button onclick="toggleSection('competences')">Compétences</button>
-        <button onclick="toggleSection('experience')">
-          Expérience professionnelle
-        </button>
-        <button onclick="toggleSection('formation')">Formation</button>
-        <button onclick="toggleSection('projets')">Projets</button>
-        <button onclick="toggleSection('langues')">Langues</button>
-        <button onclick="toggleSection('interets')">Centres d'intérêt</button>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">Tableau de Bord</div>
+        </div>
 
-      </div>
-      <hr />
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="section active" id="dashboard-section">
+                <h1>Tableau de Bord de Mbairamadji</h1>
+                <p>Vue d'ensemble de mes compétences et réalisations</p>
 
-      <section id="description">
-        <h2>Présentation du Projet</h2>
-        <p>
-          Notre projet consiste à concevoir une page web interactive permettant
-          de présenter des informations détaillées sur une personne. Le profil
-          comprend des détails tels que le nom, le prénom, l'adresse, le numéro
-          de téléphone, l'adresse e-mail, un bref résumé, les compétences, projets, etc.
-        </p>
-        <p>
-          Ce projet offre une expérience utilisateur fluide grâce à une
-          navigation intuitive. L'utilisateur peut sélectionner une option 
-          spécifique à partir d'un menu de navigation, et les informations
-          correspondantes sont affichées dynamiquement sans nécessiter de
-          rechargement de page. De plus, l'utilisateur peut toujours en un seul clic choisir d'autres options.
-        </p>
-        <p>
-          Avec cette approche interactive, notre projet vise à offrir une
-          présentation claire et efficace des compétences et des réalisations d'un individu, tout en offrant une expérience utilisateur agréable
-          et fluide.
-        </p>
-      </section>
+                <div class="dashboard-grid">
+                    <!-- Stats Card 1 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Années d'Expérience</div>
+                            <div class="card-icon blue">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number">2+</div>
+                        <div class="stats-label">En développement web</div>
+                    </div>
 
-      <section id="competences">
-        <h2>Compétences</h2>
-        <ul>
-          <li>Langages de programmation : HTML5, CSS3, JavaScript</li>
-          <li>Frameworks front-end : Bootstrap</li>
-          <!-- <li>Gestion de version : Git</li> -->
-          <li>Bases de données : SQL</li>
-        </ul>
-      </section>
+                    <!-- Stats Card 2 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Projets Complets</div>
+                            <div class="card-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number">5</div>
+                        <div class="stats-label">Applications web fonctionnelles</div>
+                    </div>
 
-      <section id="experience">
-        <h2>Expérience professionnelle</h2>
-        <p>Pas d'experience professionnelle pour le moment</p>
-      </section>
+                    <!-- Stats Card 3 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Compétences Maîtrisées</div>
+                            <div class="card-icon pink">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number">8</div>
+                        <div class="stats-label">Technologies différentes</div>
+                    </div>
+                </div>
 
-      <section id="formation">
-        <h2>Formation</h2>
-        <ul>
-          <li>
-            Licence 1 en Informatique - Université de Ngaoundéré; 
-          </li>
-          <p>
-            Modules principaux : <ul>
-              <li>Introduction a l'informatique</li>
-              <li>mathématiques pour l'informatiques</li>
-              <li>Algorithmique et structures de données</li>
-              <li>Introduction au Systemes d'exploitation</li>
-              <li>Languages de programmation(programmation structures, programmation fonctionnelle)</li>
-            </ul>
-          </p>
-          <li>
-            Baccalauréat en Sciences (D) - Lycée Collège source de Développement
-            (Septembre 2018 - Juin 2021)
-          </li>
-        
-        </ul>
-      </section>
+                <!-- Quick Links -->
+                <div class="dashboard-grid" style="margin-top: 2rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Accès Rapide</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <a href="https://github.com/mbaidouboutarkente" target="_blank" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
+                                <i class="fab fa-github" style="margin-right: 0.5rem;"></i> GitHub
+                            </a>
+                            <a href="mailto:mbairamadjiclark57@gmail.com" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
+                                <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> Email
+                            </a>
+                            <a href="tel:+237692693889" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
+                                <i class="fas fa-phone" style="margin-right: 0.5rem;"></i> Téléphone
+                            </a>
+                            <a href="#" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
+                                <i class="fas fa-download" style="margin-right: 0.5rem;"></i> CV PDF
+                            </a>
+                        </div>
+                    </div>
 
-      <section id="projets">
-        <h2>Projets</h2>
-        <p>
-          <p>Projets personnels:
-            Portfolio en ligne
-            <ul>
-              <li>Développement et maintenance d'un portfolio personnel pour présenter mes projets et compétences en web.</li>
-              <li>Utilisation de HTML, CSS et JavaScript pour la création de l'interface utilisateur.</li>
-              <li>Intégration de fonctionnalités interactives et de mise en page réactives pour une expérience utilisateur optimale.</li>
-            </ul>
-          </p>
-          <ol>
-            <p>Quelque projet realiser</p>
-            <li>
-              <p>Application de gestion d'un hotel 
-                  <ul>
-                    <li>Conception et developpement d'une application web de gestion d'hotel, presenttion d'un hotel</li>
-                    <li>Utilisation de HTML, CSS.</li>
-                    <li>Pour le visiter, cliquez <a href="https://mbaidouboutarkente.github.io/hotel/">ici</a></li>
-                  </ul>
-              </p>
-            </li>
-            <li>
-              <p> Application de gestion de restorant 
-                <ul>
-                  <li>Conception et developpement d'une application web de gestion d'un restorant permettant aux utilisateurs de s'authentifier et de passer des commandes</li>
-                  <li>Utilisation de HTML, CSS, JavaScript, Bootstrap</li>
-                    
-                </ul>
-              </p>
-            </li>
-          </ol>
-                    
-        </p>
-      </section>
+                    <!-- Derniers Projets -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Derniers Projets</div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title">
+                                <div class="project-name">Gestion d'Hôtel</div>
+                                <div class="project-links">
+                                    <a href="https://mbaidouboutarkente.github.io/hotel/" target="_blank" title="Voir le projet"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="https://github.com/mbaidouboutarkente/hotel" target="_blank" title="Code source"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="project-description">Interface web complète pour la présentation et la gestion d'un établissement hôtelier.</div>
+                            <div>
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-title">
+                                <div class="project-name">Gestion de Restaurant</div>
+                            </div>
+                            <div class="project-description">Solution web permettant aux clients de consulter le menu et passer des commandes.</div>
+                            <div>
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                                <span class="project-tech">JavaScript</span>
+                                <span class="project-tech">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <section id="langues">
-        <h2>Langues</h2>
-        <p>
-           <ul>
-              <li>Francais(niveau intermediare)</li>
-              <li>Anglais(débutant)</li>
-           </ul>
-        </p>
-      </section>
+            <!-- Compétences Section -->
+            <div class="section" id="competences-section" style="display: none;">
+                <h1>Mes Compétences Techniques</h1>
+                <p>Technologies que j'utilise dans mes projets</p>
 
-      <section id="interets">
-        <h2>Centres d'intérêt</h2>
-        <p>Exploration des nouvelles technologies : Passionné par l'évolution constante du monde de la technologie, je passe mon temps libre à explorer de nouveaux langages de programmation, frameworks et outils de développement. J'essaye participer également à des projets open source pour continuer à apprendre et à améliorer mes compétences en développement.</p>
-      </section>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Front-end</div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>HTML5</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill html"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>CSS3</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill css"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>JavaScript</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill js"></div>
+                            </div>
+                        </div>
+                    </div>
 
-      <footer>
-        <p>site personnel mbairamadji@.kente</p>
-      </footer>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Frameworks & Outils</div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Bootstrap</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bootstrap"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>MySQL</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill mysql"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Autres Compétences</div>
+                        </div>
+                        <ul style="list-style-type: none;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                Responsive Design
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                UI/UX Basics
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                Git Version Control
+                            </li>
+                            <li style="padding: 0.5rem 0;">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                Problem Solving
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expérience Section -->
+            <div class="section" id="experience-section" style="display: none;">
+                <h1>Mon Parcours Professionnel</h1>
+                <p>Mes expériences dans le domaine du développement</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Expérience Professionnelle</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-date">2023 - Présent</div>
+                            <div class="experience-title">Développeur Freelance</div>
+                            <div class="experience-company">Auto-entrepreneur</div>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Réalisation de projets personnels</li>
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Contributions à des projets open source</li>
+                                <li style="font-size: 0.9rem;">Développement d'applications web</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Projets Académiques</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-date">2022</div>
+                            <div class="experience-title">Projet Universitaire</div>
+                            <div class="experience-company">Université de Ngaoundéré</div>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Collaboration en équipe</li>
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Développement d'applications web</li>
+                                <li style="font-size: 0.9rem;">Présentation des résultats</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation Section -->
+            <div class="section" id="formation-section" style="display: none;">
+                <h1>Ma Formation Académique</h1>
+                <p>Mes études et certifications</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Éducation</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-date">2022 - Présent</div>
+                            <div class="experience-title">Licence en Informatique</div>
+                            <div class="experience-company">Université de Ngaoundéré</div>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Algorithmique et structures de données</li>
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Programmation structurée et fonctionnelle</li>
+                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Systèmes d'exploitation</li>
+                                <li style="font-size: 0.9rem;">Mathématiques pour l'informatique</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Diplômes</div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-date">2018 - 2021</div>
+                            <div class="experience-title">Baccalauréat Scientifique</div>
+                            <div class="experience-company">Lycée Collège Source de Développement</div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Option : Sciences (Série D) - Mention Assez Bien</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projets Section -->
+            <div class="section" id="projets-section" style="display: none;">
+                <h1>Mes Projets Réalisés</h1>
+                <p>Applications et sites web que j'ai développés</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Application de Gestion d'Hôtel</div>
+                        </div>
+                        <div class="project-description" style="margin-bottom: 1rem;">Interface web complète pour la présentation et la gestion d'un établissement hôtelier.</div>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://mbaidouboutarkente.github.io/hotel/" target="_blank" class="btn" style="display: inline-block; padding: 0.5rem 1rem; background-color: var(--primary); color: white; border-radius: 5px; text-decoration: none; margin-right: 0.5rem;">
+                                <i class="fas fa-external-link-alt" style="margin-right: 0.3rem;"></i> Voir le projet
+                            </a>
+                            <a href="https://github.com/mbaidouboutarkente/hotel" target="_blank" class="btn" style="display: inline-block; padding: 0.5rem 1rem; background-color: #333; color: white; border-radius: 5px; text-decoration: none;">
+                                <i class="fab fa-github" style="margin-right: 0.3rem;"></i> Code source
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Application de Gestion de Restaurant</div>
+                        </div>
+                        <div class="project-description" style="margin-bottom: 1rem;">Solution web permettant aux clients de consulter le menu et passer des commandes.</div>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                            <span class="project-tech">Bootstrap</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Portfolio Interactif</div>
+                        </div>
+                        <div class="project-description" style="margin-bottom: 1rem;">Ce CV interactif présentant mes compétences et réalisations professionnelles.</div>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section" id="contact-section" style="display: none;">
+                <h1>Contactez Mbairamadji</h1>
+                <p>Disponible pour des opportunités et collaborations</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Coordonnées</div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <i class="fas fa-envelope" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
+                                <div>
+                                    <a href="mailto:mbairamadjiclark57@gmail.com" style="color: var(--dark); text-decoration: none;">
+                                        mbairamadjiclark57@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <i class="fas fa-phone" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
+                                <div>
+                                    <a href="tel:+237692693889" style="color: var(--dark); text-decoration: none;">
+                                        +237 692 693 889
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <i class="fas fa-map-marker-alt" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
+                                <div>
+                                    Bini, Cameroun
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <i class="fab fa-github" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
+                                <div>
+                                    <a href="https://github.com/mbaidouboutarkente" target="_blank" style="color: var(--dark); text-decoration: none;">
+                                        github.com/mbaidouboutarkente
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Envoyer un message direct</div>
+                        </div>
+                        <div style="margin-top: 1rem; text-align: center;">
+                            <a href="mailto:mbairamadjiclark57@gmail.com" style="display: inline-block; padding: 1rem 2rem; background-color: var(--primary); color: white; border-radius: 5px; text-decoration: none; font-weight: 500; margin-top: 1rem;">
+                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Ouvrir dans Gmail
+                            </a>
+                            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6c757d;">
+                                Cliquez ci-dessus pour m'envoyer un email directement depuis votre client de messagerie
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // simulation du chargement de la page
-        setTimeout(function () {
-            // masquer l'element de chargement et afficher le contenu de la page
-            document.querySelector('.chargement-font').style.display ="none";
-            document.querySelector('.container').style.display ="block";
-        }, 5000);
-      function toggleSection(sectionId) {
-        var section = document.getElementById(sectionId);
-        var activeSection = document.querySelector("section.active");
-        if (activeSection && activeSection !== section) {
-          activeSection.classList.remove("active");
-        }
-        section.classList.toggle("active");
-      }
+        // Navigation entre les sections
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Retirer la classe active de tous les éléments
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Ajouter la classe active à l'élément cliqué
+                this.classList.add('active');
+                
+                // Masquer toutes les sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Afficher la section correspondante
+                const sectionId = this.getAttribute('data-section') + '-section';
+                document.getElementById(sectionId).style.display = 'block';
+                
+                // Mettre à jour le titre du header
+                const sectionTitle = this.querySelector('.nav-text').textContent;
+                document.querySelector('.header-title').textContent = sectionTitle;
+            });
+        });
+
+        // Animation des barres de progression
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
