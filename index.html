@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord | Mbairamadji Clark - Développeur Full Stack</title>
+    <title>CV Complet | Mbairamadji Clark - Développeur Full Stack</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -28,6 +28,7 @@
             background-color: #f5f7fa;
             color: var(--dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Layout */
@@ -56,8 +57,8 @@
         }
 
         .profile-img {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid white;
@@ -65,13 +66,13 @@
         }
 
         .profile-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
         }
 
         .profile-title {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             opacity: 0.8;
             margin-bottom: 1rem;
         }
@@ -127,6 +128,18 @@
             background-color: #f5f7fa;
         }
 
+        h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        p.subtitle {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -140,6 +153,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             padding: 1.5rem;
             transition: transform 0.3s, box-shadow 0.3s;
+            break-inside: avoid;
         }
 
         .card:hover {
@@ -152,10 +166,12 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.8rem;
         }
 
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--dark);
         }
@@ -184,9 +200,10 @@
         }
 
         .stats-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--primary);
         }
 
         .stats-label {
@@ -195,7 +212,7 @@
         }
 
         .progress-container {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .progress-label {
@@ -244,28 +261,33 @@
 
         .experience-item {
             margin-bottom: 1.5rem;
+            page-break-inside: avoid;
         }
 
         .experience-date {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #6c757d;
             margin-bottom: 0.3rem;
+            font-weight: 500;
         }
 
         .experience-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .experience-company {
             color: var(--primary);
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .project-card {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid #e9ecef;
+            page-break-inside: avoid;
         }
 
         .project-card:last-child {
@@ -282,6 +304,7 @@
 
         .project-name {
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .project-links a {
@@ -290,9 +313,10 @@
         }
 
         .project-description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #6c757d;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
         }
 
         .project-tech {
@@ -304,6 +328,213 @@
             display: inline-block;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+        }
+
+        ul.skills-list {
+            list-style-type: none;
+        }
+
+        ul.skills-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        ul.skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-info i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-right: 1.2rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        /* Styles pour les nouvelles sections */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .language-name {
+            font-weight: 500;
+        }
+
+        .language-level {
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .interest-item {
+            display: inline-block;
+            background-color: #f5f7fa;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Print specific styles */
+        @media print {
+            body {
+                background-color: white;
+                font-size: 10pt;
+                line-height: 1.4;
+            }
+            
+            .dashboard {
+                display: block;
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar, .header {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 0.5cm;
+                grid-column: 1;
+            }
+            
+            .section {
+                display: block !important;
+                page-break-inside: avoid;
+                padding: 0;
+                margin-bottom: 15px;
+            }
+            
+            .dashboard-grid {
+                display: block;
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            h1 {
+                font-size: 16pt;
+                margin-bottom: 5px;
+                color: #333;
+            }
+            
+            .subtitle {
+                font-size: 10pt;
+                margin-bottom: 10px;
+            }
+            
+            .card-title {
+                font-size: 11pt;
+            }
+            
+            .stats-number {
+                font-size: 14pt;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #333 !important;
+            }
+            
+            .btn, .nav-item, .card-icon {
+                display: none;
+            }
+            
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                font-weight: normal;
+                color: #666;
+            }
+            
+            .no-print, .project-links, .nav-icon {
+                display: none;
+            }
+            
+            .profile-img, .progress-bar, .progress-label {
+                display: none;
+            }
+            
+            .contact-info {
+                margin-bottom: 5px;
+            }
+            
+            .experience-item, .project-card {
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+            
+            ul {
+                padding-left: 15px;
+            }
+            
+            li {
+                margin-bottom: 2px;
+            }
+            
+            /* Two-column layout for print */
+            .print-columns {
+                column-count: 2;
+                column-gap: 20px;
+            }
         }
 
         /* Responsive */
@@ -407,8 +638,8 @@
 
             <div class="nav-menu">
                 <div class="nav-item active" data-section="dashboard">
-                    <i class="fas fa-tachometer-alt nav-icon"></i>
-                    <span class="nav-text">Tableau de Bord</span>
+                    <i class="fas fa-user nav-icon"></i>
+                    <span class="nav-text">Profil</span>
                 </div>
                 <div class="nav-item" data-section="competences">
                     <i class="fas fa-code nav-icon"></i>
@@ -426,6 +657,14 @@
                     <i class="fas fa-project-diagram nav-icon"></i>
                     <span class="nav-text">Projets</span>
                 </div>
+                <div class="nav-item" data-section="langues">
+                    <i class="fas fa-language nav-icon"></i>
+                    <span class="nav-text">Langues</span>
+                </div>
+                <div class="nav-item" data-section="interets">
+                    <i class="fas fa-heart nav-icon"></i>
+                    <span class="nav-text">Centres d'intérêt</span>
+                </div>
                 <div class="nav-item" data-section="contact">
                     <i class="fas fa-envelope nav-icon"></i>
                     <span class="nav-text">Contact</span>
@@ -435,114 +674,71 @@
 
         <!-- Header -->
         <div class="header">
-            <div class="header-title">Tableau de Bord</div>
+            <div class="header-title">Profil Professionnel</div>
+            <button class="btn no-print" onclick="window.print()">
+                <i class="fas fa-print"></i> Imprimer/PDF
+            </button>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
+            <!-- Section Profil -->
             <div class="section active" id="dashboard-section">
-                <h1>Tableau de Bord de Mbairamadji</h1>
-                <p>Vue d'ensemble de mes compétences et réalisations</p>
+                <h1>Mbairamadji Clark</h1>
+                <p class="subtitle">Développeur Full Stack | Portfolio Professionnel</p>
 
                 <div class="dashboard-grid">
-                    <!-- Stats Card 1 -->
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Années d'Expérience</div>
+                            <div class="card-title">Profil Professionnel</div>
                             <div class="card-icon blue">
-                                <i class="fas fa-calendar-alt"></i>
+                                <i class="fas fa-user-tie"></i>
                             </div>
                         </div>
-                        <div class="stats-number">2+</div>
-                        <div class="stats-label">En développement web</div>
+                        <p style="margin-bottom: 1rem;">Développeur Full Stack passionné avec 2+ ans d'expérience dans la création d'applications web modernes et responsives.</p>
+                        <p>Spécialisé en développement front-end avec des compétences solides en HTML, CSS, JavaScript et frameworks associés.</p>
                     </div>
 
-                    <!-- Stats Card 2 -->
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Projets Complets</div>
+                            <div class="card-title">Coordonnées</div>
                             <div class="card-icon green">
-                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-address-card"></i>
                             </div>
                         </div>
-                        <div class="stats-number">5</div>
-                        <div class="stats-label">Applications web fonctionnelles</div>
-                    </div>
-
-                    <!-- Stats Card 3 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Compétences Maîtrisées</div>
-                            <div class="card-icon pink">
-                                <i class="fas fa-star"></i>
-                            </div>
+                        <div class="contact-info">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:mbairamadjiclark57@gmail.com">mbairamadjiclark57@gmail.com</a>
                         </div>
-                        <div class="stats-number">8</div>
-                        <div class="stats-label">Technologies différentes</div>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="dashboard-grid" style="margin-top: 2rem;">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Accès Rapide</div>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+23598537919">+235 98 53 79 19</a>
                         </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <a href="https://github.com/mbaidouboutarkente" target="_blank" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
-                                <i class="fab fa-github" style="margin-right: 0.5rem;"></i> GitHub
-                            </a>
-                            <a href="mailto:mbairamadjiclark57@gmail.com" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
-                                <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> Email
-                            </a>
-                            <a href="tel:+237696330202" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
-                                <i class="fas fa-phone" style="margin-right: 0.5rem;"></i> Téléphone
-                            </a>
-                            <a href="#" style="padding: 0.8rem; background-color: #f5f7fa; border-radius: 8px; text-align: center; color: var(--dark); text-decoration: none;">
-                                <i class="fas fa-download" style="margin-right: 0.5rem;"></i> CV PDF
-                            </a>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+237696330202">+237 6 96 33 02 02</a>
                         </div>
-                    </div>
-
-                    <!-- Derniers Projets -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Derniers Projets</div>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+23567425402">+235 67 42 54 02</a>
                         </div>
-                        <div class="project-card">
-                            <div class="project-title">
-                                <div class="project-name">Gestion d'Hôtel</div>
-                                <div class="project-links">
-                                    <a href="https://mbaidouboutarkente.github.io/hotel/" target="_blank" title="Voir le projet"><i class="fas fa-external-link-alt"></i></a>
-                                    <a href="https://github.com/mbaidouboutarkente/hotel" target="_blank" title="Code source"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                            <div class="project-description">Interface web complète pour la présentation et la gestion d'un établissement hôtelier.</div>
-                            <div>
-                                <span class="project-tech">HTML</span>
-                                <span class="project-tech">CSS</span>
-                            </div>
+            
+                        <div class="contact-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dombao, Tchad</span>
                         </div>
-                        <div class="project-card">
-                            <div class="project-title">
-                                <div class="project-name">Gestion de Restaurant</div>
-                            </div>
-                            <div class="project-description">Solution web permettant aux clients de consulter le menu et passer des commandes.</div>
-                            <div>
-                                <span class="project-tech">HTML</span>
-                                <span class="project-tech">CSS</span>
-                                <span class="project-tech">JavaScript</span>
-                                <span class="project-tech">Bootstrap</span>
-                            </div>
+                        <div class="contact-info">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/mbaidouboutarkente" target="_blank">github.com/mbaidouboutarkente</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Compétences Section -->
+            <!-- Section Compétences -->
             <div class="section" id="competences-section" style="display: none;">
-                <h1>Mes Compétences Techniques</h1>
-                <p>Technologies que j'utilise dans mes projets</p>
+                <h1>Compétences Techniques</h1>
+                <p class="subtitle">Technologies et outils que je maîtrise</p>
 
                 <div class="dashboard-grid">
                     <div class="card">
@@ -600,78 +796,111 @@
                                 <div class="progress-fill mysql"></div>
                             </div>
                         </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Git</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%; background-color: #f14e32;"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Autres Compétences</div>
+                            <div class="card-title">Compétences Générales</div>
                         </div>
-                        <ul style="list-style-type: none;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
-                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
-                                Responsive Design
+                        <ul class="skills-list">
+                            <li>
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                <strong>Développement Web:</strong> Applications modernes et responsives
                             </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
-                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
-                                UI/UX Basics
+                            <li>
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                <strong>UI/UX Design:</strong> Interfaces utilisateur intuitives
                             </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
-                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
-                                Git Version Control
+                            <li>
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                <strong>Responsive Design:</strong> Adaptabilité multi-appareils
                             </li>
-                            <li style="padding: 0.5rem 0;">
-                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i>
-                                Problem Solving
+                            <li>
+                                <i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i>
+                                <strong>Résolution de problèmes:</strong> Debugging et optimisation
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Expérience Section -->
+            <!-- Section Expérience -->
             <div class="section" id="experience-section" style="display: none;">
-                <h1>Mon Parcours Professionnel</h1>
-                <p>Mes expériences dans le domaine du développement</p>
+                <h1>Expérience Professionnelle</h1>
+                <p class="subtitle">Mon parcours et réalisations professionnelles</p>
 
                 <div class="dashboard-grid">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Expérience Professionnelle</div>
+                            <div class="card-title">Expérience de Travail</div>
                         </div>
                         <div class="experience-item">
                             <div class="experience-date">2023 - Présent</div>
                             <div class="experience-title">Développeur Freelance</div>
                             <div class="experience-company">Auto-entrepreneur</div>
-                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Réalisation de projets personnels</li>
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Contributions à des projets open source</li>
-                                <li style="font-size: 0.9rem;">Développement d'applications web</li>
+                            <ul style="margin-top: 0.8rem; padding-left: 1.2rem;">
+                                <li style="margin-bottom: 0.5rem;">Développement d'applications web sur mesure</li>
+                                <li style="margin-bottom: 0.5rem;">Création de sites vitrines responsives</li>
+                                <li>Optimisation des performances</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2022</div>
+                            <div class="experience-title">Stagiaire en Développement Web</div>
+                            <div class="experience-company">Projets Universitaires</div>
+                            <ul style="margin-top: 0.8rem; padding-left: 1.2rem;">
+                                <li style="margin-bottom: 0.5rem;">Participation à des projets en équipe</li>
+                                <li>Implémentation de fonctionnalités front-end</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Projets Académiques</div>
+                            <div class="card-title">Réalisations Clés</div>
                         </div>
                         <div class="experience-item">
-                            <div class="experience-date">2022</div>
-                            <div class="experience-title">Projet Universitaire</div>
-                            <div class="experience-company">Université de Ngaoundéré</div>
-                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Collaboration en équipe</li>
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Développement d'applications web</li>
-                                <li style="font-size: 0.9rem;">Présentation des résultats</li>
-                            </ul>
+                            <div class="experience-title">Application de Gestion d'Hôtel</div>
+                            <div class="project-description">
+                                Interface complète de gestion des chambres et réservations avec tableau de bord administratif.
+                            </div>
+                            <div style="margin-top: 0.8rem;">
+                                <span class="project-tech">HTML5</span>
+                                <span class="project-tech">CSS3</span>
+                                <span class="project-tech">JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-title">Site Web de Restaurant</div>
+                            <div class="project-description">
+                                Plateforme de commande en ligne avec gestion de menu et réservations.
+                            </div>
+                            <div style="margin-top: 0.8rem;">
+                                <span class="project-tech">HTML5</span>
+                                <span class="project-tech">CSS3</span>
+                                <span class="project-tech">JavaScript</span>
+                                <span class="project-tech">Bootstrap</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Formation Section -->
+            <!-- Section Formation -->
             <div class="section" id="formation-section" style="display: none;">
-                <h1>Ma Formation Académique</h1>
-                <p>Mes études et certifications</p>
+                <h1>Formation Académique</h1>
+                <p class="subtitle">Mon parcours éducatif et certifications</p>
 
                 <div class="dashboard-grid">
                     <div class="card">
@@ -681,139 +910,230 @@
                         <div class="experience-item">
                             <div class="experience-date">2022 - Présent</div>
                             <div class="experience-title">Licence en Informatique</div>
-                            <div class="experience-company">Université de Ngaoundéré</div>
-                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Algorithmique et structures de données</li>
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Programmation structurée et fonctionnelle</li>
-                                <li style="margin-bottom: 0.3rem; font-size: 0.9rem;">Systèmes d'exploitation</li>
-                                <li style="font-size: 0.9rem;">Mathématiques pour l'informatique</li>
+                            <div class="experience-company">Université de Ngaoundéré, Cameroun</div>
+                            <ul style="margin-top: 0.8rem; padding-left: 1.2rem;">
+                                <li style="margin-bottom: 0.5rem;">Algorithmique et structures de données</li>
+                                <li style="margin-bottom: 0.5rem;">Programmation orientée objet</li>
+                                <li>Bases de données relationnelles</li>
                             </ul>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2018 - 2021</div>
+                            <div class="experience-title">Baccalauréat Scientifique</div>
+                            <div class="experience-company">Lycée Collège Source de Développement</div>
+                            <p style="margin-top: 0.8rem;">Option : Sciences (Série D) - Mention Assez Bien</p>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Diplômes</div>
+                            <div class="card-title">Certifications</div>
                         </div>
                         <div class="experience-item">
-                            <div class="experience-date">2018 - 2021</div>
-                            <div class="experience-title">Baccalauréat Scientifique</div>
-                            <div class="experience-company">Lycée Collège Source de Développement</div>
-                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Option : Sciences (Série D) - Mention Assez Bien</p>
+                            <div class="experience-date">2023</div>
+                            <div class="experience-title">Formation en Développement Web</div>
+                            <div class="experience-company">Auto-formation en ligne</div>
+                            <p style="margin-top: 0.8rem;">Maîtrise des technologies front-end modernes</p>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-date">2022</div>
+                            <div class="experience-title">Introduction aux Bases de Données</div>
+                            <div class="experience-company">Cours en ligne</div>
+                            <p style="margin-top: 0.8rem;">Conception et optimisation de bases de données</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Projets Section -->
+            <!-- Section Projets -->
             <div class="section" id="projets-section" style="display: none;">
-                <h1>Mes Projets Réalisés</h1>
-                <p>Applications et sites web que j'ai développés</p>
+                <h1>Mes Projets</h1>
+                <p class="subtitle">Applications et sites web que j'ai développés</p>
 
                 <div class="dashboard-grid">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">Application de Gestion d'Hôtel</div>
                         </div>
-                        <div class="project-description" style="margin-bottom: 1rem;">Interface web complète pour la présentation et la gestion d'un établissement hôtelier.</div>
-                        <div style="margin-bottom: 1rem;">
-                            <span class="project-tech">HTML</span>
-                            <span class="project-tech">CSS</span>
+                        <div class="project-description" style="margin-bottom: 1rem;">
+                            Solution complète de gestion hôtelière avec calendrier de réservations et interface admin.
                         </div>
-                        <div class="project-links">
-                            <a href="https://mbaidouboutarkente.github.io/hotel/" target="_blank" class="btn" style="display: inline-block; padding: 0.5rem 1rem; background-color: var(--primary); color: white; border-radius: 5px; text-decoration: none; margin-right: 0.5rem;">
-                                <i class="fas fa-external-link-alt" style="margin-right: 0.3rem;"></i> Voir le projet
-                            </a>
-                            <a href="https://github.com/mbaidouboutarkente/hotel" target="_blank" class="btn" style="display: inline-block; padding: 0.5rem 1rem; background-color: #333; color: white; border-radius: 5px; text-decoration: none;">
-                                <i class="fab fa-github" style="margin-right: 0.3rem;"></i> Code source
+                        <div style="margin-bottom: 1.5rem;">
+                            <span class="project-tech">HTML5</span>
+                            <span class="project-tech">CSS3</span>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
+                        <div>
+                            <a href="https://mbaidouboutarkente.github.io/hotel/" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
                             </a>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Application de Gestion de Restaurant</div>
+                            <div class="card-title">Site Web de Restaurant</div>
                         </div>
-                        <div class="project-description" style="margin-bottom: 1rem;">Solution web permettant aux clients de consulter le menu et passer des commandes.</div>
-                        <div style="margin-bottom: 1rem;">
-                            <span class="project-tech">HTML</span>
-                            <span class="project-tech">CSS</span>
+                        <div class="project-description" style="margin-bottom: 1rem;">
+                            Plateforme de commande en ligne avec gestion de menu et système de réservation.
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <span class="project-tech">HTML5</span>
+                            <span class="project-tech">CSS3</span>
                             <span class="project-tech">JavaScript</span>
                             <span class="project-tech">Bootstrap</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Portfolio Interactif</div>
-                        </div>
-                        <div class="project-description" style="margin-bottom: 1rem;">Ce CV interactif présentant mes compétences et réalisations professionnelles.</div>
-                        <div style="margin-bottom: 1rem;">
-                            <span class="project-tech">HTML</span>
-                            <span class="project-tech">CSS</span>
-                            <span class="project-tech">JavaScript</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Contact Section -->
+            <!-- Section Langues -->
+            <div class="section" id="langues-section" style="display: none;">
+                <h1>Langues</h1>
+                <p class="subtitle">Langues que je parle et niveau de maîtrise</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Langues Maîtrisées</div>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Français</span>
+                            <span class="language-level">Langue principale</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Anglais</span>
+                            <span class="language-level">Intermédiaire </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Centres d'intérêt -->
+            <div class="section" id="interets-section" style="display: none;">
+                <h1>Centres d'intérêt</h1>
+                <p class="subtitle">Mes passions et activités extra-professionnelles</p>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Passions</div>
+                        </div>
+                        <div>
+                            <span class="interest-item">Développement personnel</span>
+                            <span class="interest-item">Nouvelles technologies</span>
+                            <span class="interest-item">Lecture</span>
+                            <span class="interest-item">Voyages</span>
+                            <span class="interest-item">Musique</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Contact -->
             <div class="section" id="contact-section" style="display: none;">
-                <h1>Contactez Mbairamadji</h1>
-                <p>Disponible pour des opportunités et collaborations</p>
+                <h1>Contact</h1>
+                <p class="subtitle">Disponible pour des opportunités et collaborations</p>
 
                 <div class="dashboard-grid">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">Coordonnées</div>
                         </div>
-                        <div style="margin-top: 1rem;">
-                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                                <i class="fas fa-envelope" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
-                                <div>
-                                    <a href="mailto:mbairamadjiclark57@gmail.com" style="color: var(--dark); text-decoration: none;">
-                                        mbairamadjiclark57@gmail.com
-                                    </a>
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                                <i class="fas fa-phone" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
-                                <div>
-                                    <a href="tel:+237692693889" style="color: var(--dark); text-decoration: none;">
-                                        +237 6 96 33 02 02
-                                    </a>
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                                <i class="fas fa-map-marker-alt" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
-                                <div>
-                                    Bini, Cameroun
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center;">
-                                <i class="fab fa-github" style="font-size: 1.2rem; color: var(--primary); margin-right: 1rem;"></i>
-                                <div>
-                                    <a href="https://github.com/mbaidouboutarkente" target="_blank" style="color: var(--dark); text-decoration: none;">
-                                        github.com/mbaidouboutarkente
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="contact-info">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:mbairamadjiclark57@gmail.com">mbairamadjiclark57@gmail.com</a>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+237696330202">+237 6 96 33 02 02</a>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/mbaidouboutarkente" target="_blank">github.com/mbaidouboutarkente</a>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Envoyer un message direct</div>
+                            <div class="card-title">Disponibilité</div>
                         </div>
-                        <div style="margin-top: 1rem; text-align: center;">
-                            <a href="mailto:mbairamadjiclark57@gmail.com" style="display: inline-block; padding: 1rem 2rem; background-color: var(--primary); color: white; border-radius: 5px; text-decoration: none; font-weight: 500; margin-top: 1rem;">
-                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Ouvrir dans Gmail
-                            </a>
-                            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6c757d;">
-                                Cliquez ci-dessus pour m'envoyer un email directement depuis votre client de messagerie
-                            </p>
+                        <div style="margin-top: 1rem;">
+                            <p>Je suis disponible pour :</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+                                <li style="margin-bottom: 0.5rem;">Contrats freelance</li>
+                                <li style="margin-bottom: 0.5rem;">Projets à temps partiel</li>
+                                <li>Collaborations à long terme</li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Version imprimable condensée (masquée à l'écran) -->
+            <div class="section no-screen" id="print-section" style="display: none;">
+                <h1>MBAIRAMADJI CLARK</h1>
+                <p class="subtitle">Développeur Full Stack</p>
+                
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i> mbairamadjiclark57@gmail.com | 
+                    <i class="fas fa-phone"></i> +237 6 96 33 02 02 | 
+                    <i class="fab fa-github"></i> github.com/mbaidouboutarkente
+                </div>
+                
+                <div class="print-columns">
+                    <section>
+                        <h2>PROFIL</h2>
+                        <p>
+                            Développeur Full Stack avec 2+ ans d'expérience spécialisé en technologies front-end (HTML, CSS, JavaScript).
+                            Passionné par la création d'applications web modernes et responsives.
+                        </p>
+                        
+                        <h2>COMPÉTENCES</h2>
+                        <p><strong>Front-end:</strong> HTML5 (85%), CSS3 (80%), JavaScript (70%)</p>
+                        <p><strong>Outils:</strong> Bootstrap (75%), MySQL (65%), Git (70%)</p>
+                        <p><strong>Générales:</strong> UI/UX, Responsive Design, Résolution de problèmes</p>
+                        
+                        <h2>EXPÉRIENCE</h2>
+                        <p><strong>Développeur Freelance</strong> (2023 - Présent)</p>
+                        <ul>
+                            <li>Développement d'applications web sur mesure</li>
+                            <li>Création de sites vitrines responsives</li>
+                        </ul>
+                        
+                        <p><strong>Projets Universitaires</strong> (2022)</p>
+                        <ul>
+                            <li>Collaboration en équipe</li>
+                            <li>Développement front-end</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>PROJETS</h2>
+                        <p><strong>Gestion d'Hôtel</strong></p>
+                        <p>Interface complète de gestion (https://mbaidouboutarkente.github.io/hotel/)</p>
+                        <p>Technologies: HTML, CSS, JavaScript</p>
+                        
+                        <p><strong>Site de Restaurant</strong></p>
+                        <p>Plateforme de commande en ligne</p>
+                        <p>Technologies: HTML, CSS, JavaScript, Bootstrap</p>
+                        
+                        <h2>FORMATION</h2>
+                        <p><strong>Licence en Informatique</strong> (2022 - Présent)</p>
+                        <p>Université de Ngaoundéré</p>
+                        
+                        <p><strong>Baccalauréat Scientifique</strong> (2018 - 2021)</p>
+                        <p>Lycée Collège Source de Développement</p>
+                        
+                        <h2>LANGUES</h2>
+                        <p>Français (Langue maternelle)</p>
+                        <p>Anglais (Intermédiaire B2)</p>
+                        
+                        <h2>CENTRES D'INTÉRÊT</h2>
+                        <p>Développement personnel, Nouvelles technologies, Lecture, Voyages</p>
+                    </section>
                 </div>
             </div>
         </div>
@@ -859,6 +1179,19 @@
                 }, 100);
             });
         });
+
+        // Gestion de l'impression
+        window.onbeforeprint = function() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById('print-section').style.display = 'block';
+        };
+        
+        window.onafterprint = function() {
+            document.getElementById('print-section').style.display = 'none';
+            document.querySelector('.nav-item.active').click();
+        };
     </script>
 </body>
 </html>
